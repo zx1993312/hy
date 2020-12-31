@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "gen",
+      "type": "com.common.jlcc.cctp.config.VelocityConfig",
+      "sourceType": "com.common.jlcc.cctp.config.VelocityConfig"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}

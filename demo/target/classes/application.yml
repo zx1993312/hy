@@ -1,0 +1,34 @@
+server:
+  port: 8080 #设置访问端口
+spring:
+  devtools:
+    restart:
+      enabled: true #设置开启热部署
+  mvc:
+    view:
+      prefix: /html/ #访问页面路径 
+      suffix: .html  #访问页面后缀
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: root
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false
+# MyBatis
+mybatis:
+    # 搜索指定包别名
+    typeAliasesPackage: com.jlcc
+    # 配置mapper的扫描，找到所有的mapper.xml映射文件
+    mapperLocations: classpath*:mapper/*.xml
+    # 加载全局的配置文件
+    configLocation: classpath:mybatis-config.xml
+logging:
+  level:
+    com.jlcc.mapper: debug #输出sql语句日志

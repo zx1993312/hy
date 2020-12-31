@@ -1,0 +1,93 @@
+package cn.fifdistrict.dms.web.controller;
+
+import cn.fifdistrict.dms.domain.${Domain};
+import cn.fifdistrict.dms.query.${Domain}Query;
+import cn.fifdistrict.dms.service.I${Domain}Service;
+import cn.fifdistrict.basic.util.AjaxResult;
+import cn.fifdistrict.basic.util.PageList;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
+
+
+@Controller
+@RequestMapping("/${domain}")
+public class ${Domain}Controller {
+
+    @Autowired
+    private I${Domain}Service ${domain}Service;
+
+    /**
+     * 保存
+     * @return
+     */
+    @RequestMapping(value = "save",method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxResult save(${Domain} ${domain}){
+        try {
+            if(${domain}.getId()==null){
+                ${domain}Service.add(${domain});
+            }else{
+                ${domain}Service.update(${domain});
+            }
+            return new AjaxResult();
+        }catch (Exception e){
+            e.printStackTrace();
+            return new AjaxResult("保存失败!"+e.getMessage());
+        }
+    }
+
+    /**
+     * 删除
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxResult delete(Long id){
+        try {
+            ${domain}Service.delete(id);
+            return new AjaxResult();
+        }catch (Exception e){
+            e.printStackTrace();
+            return new AjaxResult("删除失败!"+e.getMessage());
+        }
+    }
+
+    /**
+     * 根据id查询
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/getOne",method = RequestMethod.GET)
+    @ResponseBody
+    public ${Domain} getOne(Long id){
+        return ${domain}Service.get(id);
+    }
+
+    /**
+     * 查询所有
+     * @return
+     */
+    @RequestMapping(value = "/getAll",method = RequestMethod.GET)
+    @ResponseBody
+    public List<${Domain}> getAll(){
+        return ${domain}Service.getAll();
+    }
+
+    /**
+     * 条件分页查询
+     * @param query
+     * @return
+     */
+    @RequestMapping(value = "/query",method = RequestMethod.GET)
+    @ResponseBody
+    public PageList<${Domain}> query(${Domain}Query query){
+        return ${domain}Service.queryPage(query);
+    }
+    
+}

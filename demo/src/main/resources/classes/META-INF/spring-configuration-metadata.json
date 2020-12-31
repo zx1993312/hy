@@ -1,0 +1,18 @@
+{
+  "groups": [
+    {
+      "name": "spring.datasource.druid.db1",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.jlcc.cctp.config.DataSourceConfig",
+      "sourceMethod": "public javax.sql.DataSource dataSourceCmuser() "
+    },
+    {
+      "name": "spring.datasource.druid.db2",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.jlcc.cctp.config.DataSourceConfig",
+      "sourceMethod": "public javax.sql.DataSource dataSourceIrms() "
+    }
+  ],
+  "properties": [],
+  "hints": []
+}
